@@ -41,7 +41,7 @@ io.on('connection', socket => {
   });
     socket.on('send-chat-message', (room,message) => {
          socket.to(room).emit('chat-message',{ message: message, Name: rooms[room].users[socket.id] });
-    });//broadcastler çalışmadı sil
+    });
     socket.on('disconnect', () => {
       getUserRooms(socket).forEach(room => {
       socket.to(room).emit('user-disconnected', rooms[room].users[socket.id])
